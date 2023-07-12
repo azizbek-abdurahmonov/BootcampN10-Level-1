@@ -15,13 +15,13 @@ Console.WriteLine($"\nFirst name: {firstname}\nLast name: {lastname}\nAge: {age}
 //Task - 2
 Console.WriteLine("\nTask - 2");
 DateTime today = DateTime.Now;
-DateTime date = new DateTime(1970, 1, 1);
+var date = DateTime.UnixEpoch;
 byte ageB = 75;
 float balance = 35.5F;
 string name = "Max Developer";
 
 Console.WriteLine(today);
-Console.WriteLine(date);
+Console.WriteLine(date.ToString("yyyy dd MMMM"));
 Console.WriteLine(ageB);
 Console.WriteLine(balance);
 Console.WriteLine(name);
