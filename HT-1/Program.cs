@@ -21,7 +21,7 @@ float balance = 35.5F;
 string name = "Max Developer";
 
 Console.WriteLine(today);
-Console.WriteLine(date.ToString("yyyy dd MMMM"));
+Console.WriteLine(date.ToString("yyyy dd MMMM"));3
 Console.WriteLine(ageB);
 Console.WriteLine(balance);
 Console.WriteLine(name);
