@@ -1,36 +1,21 @@
-﻿Console.Write("Enter your email : ");
+﻿using System.Text.RegularExpressions;
+
+x:
+Console.Write("Enter your email: ");
 var email = Console.ReadLine();
 
-var changed = string.Empty;
-var count = (int)default;
-var count2 = (int)default;
+var p = @"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$";
+var check = new Regex(p);
 
-foreach (var item in email)
+var ch = check.IsMatch(email);
+
+if (ch)
 {
-    var code = Convert.ToInt32(item);
-    if ((code >= 97 && code <= 122) || (code >= 65 && code <= 90) || (code >= 48 && code <= 57) || code == 46 || code == 64)
-    {
-        count++;
-    }
-    else
-    {
-        Console.WriteLine($"Xato: {item}");
-    }
-
-    if (code >= 65 && code <= 90)
-    {
-        changed += Convert.ToChar(code + 32);
-        count2++;
-    }
-    else
-    {
-        changed += item;
-    }
+    Console.WriteLine("Done!");
+}
+else
+{
+    Console.WriteLine("Invalid email");
 }
 
-if(count == email.Length && count2 != 0)
-{
-    Console.WriteLine($"Bu versiya yaxshiroq: {changed}");
-}
-
-
+goto x;

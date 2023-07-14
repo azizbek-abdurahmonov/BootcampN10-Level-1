@@ -16,6 +16,7 @@ foreach (var word in wordsB)
     }
 }
 
+
 var rd = new Random();
 var idx = rd.Next(0, words.Length);
 username += $"-{words[idx]}";
