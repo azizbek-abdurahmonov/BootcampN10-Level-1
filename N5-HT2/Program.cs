@@ -30,7 +30,7 @@ while (true)
         }
         else
         {
-            result = Convert.ToInt32(Console.ReadLine()) / num1;
+            result = num1 / s;
             Console.WriteLine($"Result: {result}");
         }
 
