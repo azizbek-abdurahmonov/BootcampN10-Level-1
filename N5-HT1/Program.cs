@@ -75,12 +75,12 @@ for (var num = 0; num < 5; num++)
     }
     else
     {
-        mistakes += $"Question : {questions[num]}\nAnswer: {answers[num]}\n";
+        mistakes += $"Question : {questions[num]}\nAnswer: {correct[num]}\n";
     }
 }
 
 Console.WriteLine($"Ball: {ball}");
-if(mistakes.Length == 0)
+if (mistakes.Length == 0)
 {
     Console.WriteLine("Ajoyib, xato javoblar mavjud emas!");
 }

@@ -9,7 +9,7 @@ while (true)
     var command = Console.ReadLine();
     var result = (object)default;
 
-    if (command == "e")
+    if (command == "e" || command == "exit")
     {
         Console.WriteLine("Thank you for using calculator!");
         break;
