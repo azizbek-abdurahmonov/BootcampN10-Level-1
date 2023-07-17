@@ -23,8 +23,16 @@ while (true)
     else if (command == "/")
     {
         Console.Write("Enter a number: ");
-        result = Convert.ToInt32(Console.ReadLine()) / num1;
-        Console.WriteLine($"Result: {result}");
+        var s = Convert.ToInt32(Console.ReadLine());
+        if(s == 0)
+        {
+            Console.WriteLine("Sonni 0 ga bo'lib bo'lmaydi!");
+        }
+        else
+        {
+            result = Convert.ToInt32(Console.ReadLine()) / num1;
+            Console.WriteLine($"Result: {result}");
+        }
 
     }
     else if (command == "+")
