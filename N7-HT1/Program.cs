@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-var dateTime = new DateOnly(2023, 7, 15);
+var dateTime = new DateOnly(2023, 6, 15);
 var days = new[]
 {
     dateTime.AddDays(1),
@@ -47,8 +47,17 @@ for (int i = 0; i < divisions.Length; i++)
 {
     try
     {
-        var score = (durations[i].TotalHours - (divisions[i] / durations[i].TotalHours)) / (8 + (8 - durations[i - 1].TotalHours)) * 10;
-        Console.WriteLine($"{days[i].ToString("dd.MM.yyyy")} - {durations[i].TotalHours} hour - {score:F2} score");
+        if (durations[i-1].TotalHours < 8)
+        {
+            var score = (durations[i].TotalHours - (divisions[i] / durations[i].TotalHours)) / (8 + (8 - durations[i - 1].TotalHours)) * 10;
+            Console.WriteLine($"{days[i].ToString("dd.MM.yyyy")} - {durations[i].TotalHours} hour - {score:F2} score");
+        }
+        else
+        {
+            var score = (durations[i].TotalHours - (divisions[i] / durations[i].TotalHours)) / (8 + 0) * 10;
+            Console.WriteLine($"{days[i].ToString("dd.MM.yyyy")} - {durations[i].TotalHours} hour - {score:F2} score");
+        }
+
     }
     catch
     {
