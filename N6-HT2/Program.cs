@@ -1,4 +1,4 @@
-﻿//Event scheduler
+﻿// Eventlarni va ularni vaqtlarini alohida arraylarga saqlab olish
 var dates = new DateTime[]
 {
     new DateTime(2023, 01, 14),
