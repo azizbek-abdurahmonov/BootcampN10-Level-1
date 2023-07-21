@@ -55,7 +55,7 @@ while (true)
     {
         case '1':
             Console.Clear();
-            var tanlov = "1 - DotNET\n2 - SMM\n3 - Python\n4 - Dizayn";
+            var tanlov = "1 - DotNET\n2 - SMM\n3 - Python\n4 - Dizayn\n5- Talaba qo'shish\n6 - Talabba o'chirish";
             Console.WriteLine(tanlov);
             while (true)
             {
@@ -99,6 +99,40 @@ while (true)
                         Console.WriteLine("\n0 - ortga");
 
                         break;
+
+                    case '5':
+                        Console.Clear();
+                        Console.WriteLine("ENter FIO: ");
+                        var fullname = Console.ReadLine();
+                        Console.WriteLine("Enter birthday [oy/kun/yil]: ");
+                        var bdate = Convert.ToDateTime(Console.ReadLine());
+                        Console.WriteLine("Edu Type: ");
+                        var edutype = Console.ReadLine();
+                        student.Add(new Student
+                        {
+                            Id = student.Count + 2,
+                            FullName = fullname,
+                            BirthDay = bdate,
+                            EduType = edutype,
+                            Payment = 0,
+                            PaymentAmount = 0
+                        });
+                        Console.WriteLine("Qo'shildi!\n0 - Ortga\n");
+                        break;
+
+                    case '6':
+                        Console.Clear();
+                        foreach (var item in student)
+                        {
+                            Console.WriteLine($"{item.Id}. {item.FullName} - {item.GetAge()} - {item.EduType}");
+                        }
+                        Console.Write("\nO'chirmoqchi bo'lgan talabaning ID sini kiriting: ");
+                        var id = int.Parse(Console.ReadLine());
+                        student.RemoveAt(id-1);
+                        Console.WriteLine("O'chirildi!\n\n0 - ortga!\n");
+
+                        break;
+
                     case '0':
                         Console.Clear();
                         goto menu;
