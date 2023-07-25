@@ -35,14 +35,20 @@ while (true)
         {
             case "n":
                 musicPlayer.Next();
+                Console.WriteLine($"Playing {musicPlayer.nowPlaying.Author} - {musicPlayer.nowPlaying.Title}");
                 break;
             case "p":
-                musicPlayer.Previous(); break;
+                musicPlayer.Previous(); 
+                Console.WriteLine($"Playing {musicPlayer.nowPlaying.Author} - {musicPlayer.nowPlaying.Title}");
+
+                break;
             case "pause":
                 musicPlayer.Pause();
+
                 break;
             case "play":
                 musicPlayer.Play();
+
                 break;
         }
     }
@@ -65,17 +71,14 @@ public class MusicPlayer
     public Track nowPlaying;
     public bool isPaused = false;
 
-    //public MusicPlayer()
-    //{
-    //    if (Tracks.Count > 0)
-    //        nowPlaying = Tracks[0];
-    //}
 
     public void Next()
     {
         if (Tracks[Tracks.Count - 1] == nowPlaying)
         {
+            Console.Write("End of music ");
             nowPlaying = Tracks[0];
+            isPaused = false;
         }
         else
         {
@@ -84,17 +87,22 @@ public class MusicPlayer
                 if (Tracks[i] == nowPlaying)
                 {
                     nowPlaying = Tracks[i + 1];
+                    isPaused = false;
+
                     break;
                 }
             }
         }
-        Play();
     }
 
     public void Previous()
     {
         if (nowPlaying == Tracks[0])
+        {
             nowPlaying = Tracks[Tracks.Count - 1];
+            isPaused = false;
+
+        }
         else
         {
             for (var i = 0; i < Tracks.Count; i++)
@@ -102,23 +110,37 @@ public class MusicPlayer
                 if (nowPlaying == Tracks[i])
                 {
                     nowPlaying = Tracks[i - 1];
+                    isPaused = false;
+
                     break;
                 }
 
             }
         }
-        Play();
 
     }
 
     public void Pause()
     {
-        Console.WriteLine($"Paused - {nowPlaying.Title}");
+        if (isPaused)
+        {
+            Console.WriteLine("Already paused! " + nowPlaying.Title);
+        }
+        else
+        {
+            Console.WriteLine($"Paused - {nowPlaying.Title}");
+            isPaused = true;
+        }
     }
 
     public void Play()
     {
-        Console.WriteLine($"Play - {nowPlaying.Title}");
+        if (isPaused)
+        {
+            Console.WriteLine($"Play - {nowPlaying.Title}");
+            isPaused = false;
+        }else
+            Console.WriteLine("Already played " + nowPlaying.Title);
     }
 
 }
