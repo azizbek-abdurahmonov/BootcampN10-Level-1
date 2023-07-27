@@ -13,7 +13,7 @@ user2.familiya = "Abdurahmonov";
 
 Console.WriteLine($"1- user: {user2.FullName}");
 
-Console.WriteLine(user1.Equals(user2));
+Console.WriteLine(user1.Equals(user2)); //ular bir xil
 
 
 
