@@ -4,7 +4,6 @@ Console.WriteLine(messager.SearchMessage("pass")); // shu nomdagi message consol
 Console.WriteLine(messager.SearchMessage("Jumanazar haqida message")); // message mavjud emas , shuning uchun message topilmadi teksti consolega chiqadi
 
 
-
 public class NotificationMessages
 {
     private Dictionary<string, string> Messages = new Dictionary<string, string>();
@@ -28,6 +27,6 @@ public class NotificationMessages
 
     public string SearchMessage(string messageName)
     {
-        return FindMessage(messageName).Value;
+        return FindMessage(messageName).Value.ToString();
     }
 }
