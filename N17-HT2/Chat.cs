@@ -8,7 +8,7 @@ namespace N17_HT2
 {
     internal class Chat
     {
-        public List<ChatMessage> Messages = new List<ChatMessage>();
+        private List<ChatMessage> Messages = new List<ChatMessage>();
 
 
         public Guid Add(string content)
