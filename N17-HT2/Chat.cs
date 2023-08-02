@@ -50,7 +50,7 @@ namespace N17_HT2
         {
             foreach (var message in Messages)
             {
-                Console.WriteLine($"{message.Id}:\n{message.SentTime}, {message.EditedTime}\n{message.Content}\n");
+                Console.WriteLine($"{message.Content} - {message.SentTime}");
             }
         }
     }
