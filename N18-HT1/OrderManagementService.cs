@@ -60,6 +60,7 @@ namespace N18_HT1
             {
                 return sum;
             }
+
             sum = 0;
             foreach (var item in Orders)
             {

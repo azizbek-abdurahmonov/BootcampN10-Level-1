@@ -11,11 +11,11 @@ management.Add(130);
 Console.WriteLine($"Sum: {management.Sum()}");
 
 
-//Console.WriteLine($"Max: {management.Max()}");
-//Console.WriteLine($"Min: {management.Min()}");
+Console.WriteLine($"Max: {management.Max()}");
+Console.WriteLine($"Min: {management.Min()}");
 
-//management.Add(662);
-//management.Add(431);
-//Console.WriteLine($"Sum: {management.Sum()}");
-//Console.WriteLine($"Max: {management.Max()}");
-//Console.WriteLine($"Min: {management.Min()}");
+management.Add(662);
+management.Add(431);
+Console.WriteLine($"Sum: {management.Sum()}");
+Console.WriteLine($"Max: {management.Max()}");
+Console.WriteLine($"Min: {management.Min()}");
