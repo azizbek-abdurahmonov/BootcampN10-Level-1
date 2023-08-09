@@ -47,7 +47,8 @@ namespace N19_HT2
         }
         public static void Decrement(ref int value)
         {
-            if (value > int.MinValue) value--;
+            if (value > int.MinValue)
+                value--;
         }
     }
 }
