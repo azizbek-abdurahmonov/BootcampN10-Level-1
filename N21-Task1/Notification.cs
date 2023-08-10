@@ -18,5 +18,9 @@ namespace N21_Task1
             Message = message;
             TimeStamp = timestamp;
         }
+
+        
     }
 }
+
+

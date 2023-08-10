@@ -1,7 +1,13 @@
 ﻿using N21_Task1;
 
 var system = new TaskManagerSystem();
-var developer1 = new Developer(1, "abdura", "abdura", "azizbek@gmail.com", isAdmin: true);
+var developer1 = new Developer(1, "abdura", "abdura", "abdura52.uz@gmail.com", isAdmin: true);
+
+system.AddUser(developer1);
+
+var developer2 = new Developer(2, "user", "user", "abdura52.uz@gmail.com");
+system.AddUser(developer2);
+
 
 while (true)
 {
@@ -19,15 +25,15 @@ while (true)
             password = Console.ReadLine();
 
 
-            if (system.CheckUser(username, password))
+            if (system.CheckProjectManager(username, password))
             {
                 while (true)
                 {
-                    Console.WriteLine("1.Project yaratish\n2.Task yaratish\n3.User yaratish\n4.Notification jo'natish5.Log out");
+                    Console.WriteLine("1.Project yaratish\n2.Task yaratish\n3.User yaratish\n4.Notification jo'natish\n5.Developerlarga task berish\n6.Log out");
                     Res = Console.ReadLine();
 
                     //Check log out
-                    if (Res == "5")
+                    if (Res == "6")
                         break;
 
 
@@ -65,10 +71,10 @@ while (true)
                             {
                                 Console.WriteLine("Task qo'shmoqchi bo'lgan proyektingizni ID sini kiriting: ");
                                 id = int.Parse(Console.ReadLine());
-                                var project = system.GetProject(id);
+                                var projectB = system.GetProject(id);
 
                                 Console.WriteLine("Task ID sini kiriting: ");
-                                var taskID = int.Parse(Console.ReadLine());
+                                var taskIDB = int.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Task title kiriting: ");
                                 var taskTitle = Console.ReadLine();
@@ -79,7 +85,7 @@ while (true)
                                 Console.WriteLine("Deadline kiriting: yyyy-MM-dd :");
                                 DateTime deadline = DateTime.Parse(Console.ReadLine());
 
-                                project.AddTask(new N21_Task1.Task(taskID, taskTitle, taskDesc, deadline));
+                                projectB.AddTask(new N21_Task1.Task(taskIDB, taskTitle, taskDesc, deadline));
 
                             }
 
@@ -105,9 +111,78 @@ while (true)
                             break;
 
                         case "4":
-                            //
+                            system.ShowUsers();
+                            Console.WriteLine("Notification jo'natmoqchi bo'lgan developeringizni ID sini kiriting: ");
+                            var IdForNotification = int.Parse(Console.ReadLine());
+                            var UserForNotification = system.getUser(IdForNotification);
+
+                            Console.WriteLine("Notification message sini kiriting: ");
+                            var NotificationMessage = Console.ReadLine();
+                            Console.WriteLine("Kuting..");
+                            try
+                            {
+                                system.SendEmail(new Notification(UserForNotification, NotificationMessage, DateTime.Now));
+                                Console.WriteLine("Yuborildi!");
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Yuborish vaqtida xatolik bo'ldi!");
+                            }
+                            break;
+                        case "5":
+                            system.ShowUsers();
+                            Console.WriteLine("USER Id sini kiriting: ");
+                            var projectID = int.Parse(Console.ReadLine());
+                            var project = system.GetProject(projectID);
+
+                            var rres = system.ShowTasks(project);
+                            if (!rres) break;
+                            Console.WriteLine("Task Id sini kiriting: ");
+                            var taskID = int.Parse(Console.ReadLine());
+                            var task = system.GetTask(project, taskID);
+
+                            system.ShowUsers();
+                            Console.WriteLine("Qaysi developerga biriktirmoqchisiz? ");
+                            userID = int.Parse(Console.ReadLine());
+                            var developer = system.getUser(userID);
+                            developer.AddTask(task);
+
+                            break;
+                    }
+                }
+
+
+            }
+            else if (system.checkUser(username, password))
+            {
+                while (true)
+                {
+
+                    Console.WriteLine("1.Tasklarni ko'rish\n2.Taskni bajarilganligini kiritish\n3.Password o'zgartirish\n4.Log out");
+                    Res = Console.ReadLine();
+
+                    var Me = system.GetUserFromUsername(username);
+                    if (Res == "4")
+                        break;
+
+                    switch (Res)
+                    {
+                        case "1":
+                            system.ShowDeveloperTasks(Me);
                             break;
 
+                        case "2":
+                            system.ShowDeveloperTasks(Me);
+                            Console.WriteLine("Task Id sini kiriting: ");
+                            system.ChangeComplete(Me, int.Parse(Console.ReadLine()));
+                            Console.WriteLine("Task bajarildi  deb belgilandi");
+                            break;
+                        case "3":
+                            Console.WriteLine("Yangi password kiriting: ");
+                            var newPass = Console.ReadLine();
+
+                            Me.Password = newPass;
+                            break;
                     }
                 }
 

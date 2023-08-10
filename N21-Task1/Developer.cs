@@ -14,7 +14,7 @@ namespace N21_Task1
         public string Email { get; set; }
         public bool IsAdmin { get; set; }
 
-        public List<Project> Projects;
+        public List<Task> Tasks;
         public List<string> Comments;
 
         public Developer(int id, string username, string password, string email, bool isAdmin = false)
@@ -24,8 +24,13 @@ namespace N21_Task1
             Password = password;
             Email = email;
             IsAdmin = isAdmin;
-            Projects = new List<Project>();
+            Tasks = new List<Task>();
             Comments = new List<string>();
+        }
+
+        public void AddTask(Task task)
+        {
+            Tasks.Add(task);
         }
     }
 }
