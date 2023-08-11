@@ -23,13 +23,9 @@ namespace N21_HT1
             {
                 throw new Exception("array length cannot be less than 0");
             }
-            else if (_size == 0)
-            {
-                _items = new T[_capacity];
-            }
             else
             {
-                _items = new T[_size];
+                _items = new T[_capacity];
             }
         }
 
@@ -106,29 +102,37 @@ namespace N21_HT1
 
         public bool Remove(T item)
         {
-            var newArray = new T[_items.Length - 1];
-
-            bool isNotFound = true;
-            var index = 0;
-            for (var idx = 0; idx < _items.Length; idx++)
+            try
             {
-                if (_items[idx].Equals(item) && isNotFound)
+
+                var newArray = new T[_items.Length - 1];
+
+                bool isNotFound = true;
+                var index = 0;
+                for (var idx = 0; idx < _items.Length; idx++)
                 {
-                    isNotFound = false;
+                    if (_items[idx].Equals(item) && isNotFound)
+                    {
+                        isNotFound = false;
+                    }
+                    else
+                    {
+                        newArray[index] = _items[idx];
+                        index++;
+                    }
                 }
+
+                if (isNotFound)
+                    return false;
                 else
                 {
-                    newArray[index] = _items[idx];
-                    index++;
+                    _items = newArray;
+                    return true;
                 }
             }
-
-            if (isNotFound)
-                return false;
-            else
+            catch
             {
-                _items = newArray;
-                return true;
+                return false;
             }
 
         }
