@@ -1,10 +1,11 @@
-﻿using N22_HT2.Interfaces;
+﻿using System.Threading.Channels;
+using N22_HT2.Interfaces;
 using N22_HT2.Models;
 
 var reviewList = new ReviewList<IReview>();
 reviewList.GetOverallReview();
 
-var review1 = new Review(4, "1-review message");
+var review1 = new Review(1, "1-review message");
 var review2 = new Review(2, "2-review message");
 var crash1 = new CrashReport(3, "1-crash report message", "screenshot/path.png");
 var crash2 = new CrashReport(5, "2-crash report message", "screenshot/path2.png");
@@ -14,6 +15,7 @@ reviewList.Add(review2);
 reviewList.Add(crash1);
 reviewList.Add(crash2);
 
+Console.WriteLine("OverallReview: ");
 reviewList.GetOverallReview();
 Console.WriteLine(review1);
 

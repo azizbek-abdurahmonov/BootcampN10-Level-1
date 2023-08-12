@@ -21,13 +21,13 @@ namespace N22_HT2.Models
 
         public void GetOverallReview()
         {
-
             if (!_reviews.Any())
             {
                 Console.WriteLine("Be the first leave a review for this product");
                 return;
             }
-            else if (_reviews.All(review => review.Star == 5))
+            
+            if (_reviews.All(review => review.Star == 5))
             {
                 Console.WriteLine("Great News! All reviews for this product are 5 star raitings");
                 return;
@@ -38,31 +38,21 @@ namespace N22_HT2.Models
             {
                 Console.WriteLine(review.Message);
             }
-
         }
 
         public TReview? GetReview(Guid id)
         {
-            foreach (var review in _reviews)
-                if (review.Id == id)
-                    return review;
-
-            return default(TReview);
+            return _reviews.Find(review => review.Id == id);
         }
 
         public TReview? GetReview(string message)
         {
-            foreach (var review in _reviews)
-                if (review.Message == message)
-                    return review;
-            return default(TReview);
+            return _reviews.Find(review => review.Message == message);
         }
 
         public void Remove(Guid id)
         {
-            foreach (var review in _reviews)
-                if (review.Id == id)
-                    _reviews.Remove(review);
+            _reviews.Remove(_reviews.FirstOrDefault(review => review.Id == id));
         }
 
         public void Remove(TReview item)
@@ -72,12 +62,9 @@ namespace N22_HT2.Models
 
         public void Update(Guid id, int star, string message)
         {
-            foreach (var review in _reviews)
-                if (review.Id == id)
-                {
-                    review.Star = star;
-                    review.Message = message;
-                }
+            var review = _reviews.First(review => review.Id == id);
+            review.Star = star;
+            review.Message = message;
         }
     }
 }
