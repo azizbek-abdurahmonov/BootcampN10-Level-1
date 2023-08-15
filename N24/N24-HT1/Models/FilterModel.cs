@@ -1,6 +1,7 @@
 namespace N24_HT1.Models;
 
-public class FilterModel
+public abstract class FilterModel
 {
-    
+    public int pageSize { get; set; }
+    public int pageToken { get; set; }
 }
