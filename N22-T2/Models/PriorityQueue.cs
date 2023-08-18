@@ -18,10 +18,23 @@ public class PriorityQueue<TEvent> : IEnumerable<TEvent>, IPriorityQueue<TEvent>
 
     public TEvent Dequeue()
     {
-        var Now = _events.OrderBy(e => e.Priority).Last();
+        for (var i = 0; i < _events.Count; i++)
+        {
+            for (var j = 0; j < _events.Count; j++)
+            {
+                if (_events[i] < _events[j])
+                {
+                    (_events[i], _events[j]) = (_events[j], _events[i]);
+                }
+            }
+        }
+
+        var Now = _events.Last();
         _events.Remove(Now);
         return Now;
     }
+    
+
 
     public TEvent Peek()
     {

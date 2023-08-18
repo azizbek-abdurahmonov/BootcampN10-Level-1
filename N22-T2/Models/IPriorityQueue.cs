@@ -7,4 +7,5 @@ public interface IPriorityQueue<TEvent> where TEvent : ITaskEvent
     TEvent Dequeue();
 
     TEvent Peek();
+    
 }
