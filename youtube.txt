@@ -1,0 +1,44 @@
+Video modeli bor:
+	nomi (title)
+	description
+	likes
+	dislikes
+	views
+	rasm
+	davomiyligi
+	yuklangan vaqti
+	List<Comment>
+
+	bosh sahifada "filter" lash mumkin, 
+	eng ko'p ko'rilgan (views bo'yicha)
+	tavsiya beriladigan (likes bo'yicha)
+	yaqinda yuklangan (yuklangan vaqt bo'yicha)
+
+Comment modeli :
+	userId
+	Message
+	videoId
+	likes,
+	dislikes,
+	yozilgan vaqti
+
+	filterlash ishlatilgan
+	yaqinda yozilgan (vaqt bo'yicha)
+	eski (vaqt bo'yicha)
+
+Search bor
+nomi bo'yicha filterlab, likelari bo'yicha saralab chiqaradi
+
+
+User modeli:
+	Id
+	emailAddress
+	channelName
+	obuna bo'lgan kanallar to'plami
+
+Channel modeli:
+	Id
+	rasm
+	videolar to'plami List<Video>
+	followerlar to'plami List<User>
+
