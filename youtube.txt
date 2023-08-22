@@ -41,4 +41,3 @@ Channel modeli:
 	rasm
 	videolar to'plami List<Video>
 	followerlar to'plami List<User>
-
