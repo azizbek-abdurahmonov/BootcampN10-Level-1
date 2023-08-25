@@ -3,11 +3,14 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>N31_Task1</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-
+    <ItemGroup>
+      <Folder Include="Downloads\" />
+    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="GoogleTranslate" Version="1.0.5" />
