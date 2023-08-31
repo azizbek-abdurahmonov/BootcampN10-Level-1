@@ -43,4 +43,9 @@ public class Product
         Name = product.Name;
         Description = product.Description;
     }
+
+    public override string ToString()
+    {
+        return $"{Name} {Description}";
+    }
 }

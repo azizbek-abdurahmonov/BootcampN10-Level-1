@@ -14,7 +14,7 @@ public abstract class MusicService
     {
     }
 
-    public virtual void Add(string name, string songName)
+    public virtual void Add(string name, string singerName)
     {
     }
 }

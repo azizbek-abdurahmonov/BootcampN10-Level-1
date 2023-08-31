@@ -17,6 +17,7 @@
       <PackageReference Include="GoogleTranslate" Version="1.0.5" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-preview.4" />
+      <PackageReference Include="QRCoder" Version="1.4.3" />
     </ItemGroup>
 
 </Project>
